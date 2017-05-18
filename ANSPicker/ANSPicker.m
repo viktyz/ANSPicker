@@ -48,6 +48,7 @@
 @property (nonatomic, strong) NSMutableArray<ANSPickerModel *> *records;
 @property (nonatomic, strong) ANSPickerUI *pickerUI;
 @property (nonatomic, assign) NSInteger tCount;
+@property (nonatomic, assign) BOOL active;
 
 @end
 
@@ -68,6 +69,7 @@
 
 - (void)pickerEnter:(BOOL)open
 {
+    self.active = open;
     self.pickerUI = [[ANSPickerUI alloc] init];
     [self.pickerUI pickerEnter:open];
 }
@@ -82,10 +84,16 @@
 
 - (NSURL *)exchange:(NSURL *)url
 {
+    if (!self.active) {
+        
+        return url;
+    }
+    
     _tCount++;
     [self.pickerUI updateTitle:[NSString stringWithFormat:@"%ld(%ld)",[self.records count] + 1,_tCount]];
     
     if ([url.absoluteString length] == 0) {
+        
         return url;
     }
     

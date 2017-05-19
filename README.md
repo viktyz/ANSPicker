@@ -1,2 +1,2 @@
 # ANSPicker
-A tool use to change request URL more convenient
+A tool used to change request url more convient for iOS application

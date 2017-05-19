@@ -8,6 +8,7 @@
 
 #import "ANSPickerUI.h"
 #import "ANSPicker.h"
+#import <UIKit/UIKit.h>
 
 #define anspScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define anspScreenHeight [[UIScreen mainScreen] bounds].size.height
@@ -53,13 +54,17 @@ UIAlertViewDelegate
 
 - (void)updateTitle:(NSString *)title
 {
+    if ([title length] == 0) {
+        title = @"";
+    }
+    
     _cTitle = title;
     
     if (self.frame.size.width == self.btnFrame.size.width) {
-        title = [NSString stringWithFormat:@"%@\nURL(COUNTS)",title];
+        title = [NSString stringWithFormat:@"%@\nURL(Total)",title];
     }
     else{
-        title = [NSString stringWithFormat:@"%@\nDouble Clear",title];
+        title = [NSString stringWithFormat:@"%@\n[Double Click - Clear]\n[Single Click - Close]",title];
     }
     
     [self.label setText:title];
@@ -142,7 +147,7 @@ UIAlertViewDelegate
     self.button.backgroundColor = [UIColor blackColor];
     
     self.label = [[UILabel alloc] initWithFrame:self.button.bounds];
-    self.label.numberOfLines = 2;
+    self.label.numberOfLines = 3;
     self.label.textColor = [UIColor whiteColor];
     self.label.font = [UIFont systemFontOfSize:10.0];
     self.label.minimumScaleFactor = 0.5;
@@ -301,7 +306,7 @@ UIAlertViewDelegate
 {
     if (!_window) {
         
-        self.window = [[ANSPickerWindow alloc] initWithFrame:CGRectMake(100, 100, 80, 80)];
+        self.window = [[ANSPickerWindow alloc] initWithFrame:CGRectMake(100, 100, 120, 40)];
     }
 }
 

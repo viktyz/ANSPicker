@@ -21,6 +21,8 @@
 
 @interface ANSPicker : NSObject
 
+@property (nonatomic, assign, readonly) BOOL active;
+
 + (instancetype)sharedPicker;
 
 - (void)pickerEnter:(BOOL)open;

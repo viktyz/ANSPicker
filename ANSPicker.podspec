@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ANSPicker"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A tool used to change request url before sending to server"
 
   # This description is used to generate tags and improve search results.
